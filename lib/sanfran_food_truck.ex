@@ -34,5 +34,6 @@ defmodule SanfranFoodTruck do
     |> CSV.decode!(headers: true)
     |> Enum.take_while(& !is_nil(&1))
     |> Enum.map(& LocationValidator.validate_and_normalize_location(&1))
+    |> Enum.filter(& &1.status != :expired)
   end
 end

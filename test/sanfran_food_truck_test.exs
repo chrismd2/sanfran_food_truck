@@ -33,4 +33,11 @@ defmodule SanfranFoodTruckTest do
       } = location
     end)
   end
+
+  test "ensure no locations are expired" do
+    SanfranFoodTruck.get_data()
+    |> Enum.each(fn %{status: status} ->
+      assert status in ~w(current pending)a
+    end)
+  end
 end
