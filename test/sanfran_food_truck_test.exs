@@ -9,27 +9,28 @@ defmodule SanfranFoodTruckTest do
       |> CSV.decode!(headers: true)
       |> Enum.take(1)
 
-    assert {:ok,  %{
+    assert %{
       latitude: _latitude,
       longitude: _longitude,
       address: _address,
       food_items: _,
       status: _status,
       facility_type: _,
-    }} = data
+    } = data
     |> LocationValidator.validate_and_normalize_location
   end
 
   test "get data and check data shape" do
-    assert [
-      %{
-          latitude: _,
-          longitude: _,
-          address: _,
-          food_items: _,
-          status: _,
-          facility_type: _,
-      } | _
-    ] = SanfranFoodTruck.get_data()
+    SanfranFoodTruck.get_data()
+    |> Enum.each(fn location ->
+      assert %{
+        latitude: _,
+        longitude: _,
+        address: _,
+        food_items: _,
+        status: _,
+        facility_type: _,
+      } = location
+    end)
   end
 end
