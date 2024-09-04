@@ -4,7 +4,7 @@
 
 ## Installation
 
-Add this project to the local directory and the package can be installed
+Add this project to the local directory (ie `git clone https://github.com/chrismd2/sanfran_food_truck.git`) and the package can be installed
 by adding `sanfran_food_truck` to your list of dependencies in `mix.exs`:
 
 ```elixir
