@@ -4,13 +4,13 @@
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+Add this project to the local directory and the package can be installed
 by adding `sanfran_food_truck` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:sanfran_food_truck, "~> 0.1.0"}
+    {:sanfran_food_truck, "~> 0.1.0", path: "./sanfran_food_truck"}
   ]
 end
 ```
