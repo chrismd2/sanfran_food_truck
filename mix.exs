@@ -23,6 +23,7 @@ defmodule SanfranFoodTruck.MixProject do
     [
       {:ecto_sql, "~> 3.0"},
       {:csv, "~> 3.2"},
+      {:math, "~> 0.7.0"},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:postgrex, ">= 0.0.0"},
     ]
