@@ -1,6 +1,6 @@
 # SanfranFoodTruck
 
-**TODO: Add description**
+This project interacts with data provided by San Fransisco liscensing agency for food trucks to filter and return data of interest based on food types, close to a latitude & longitude, and within a certain distance.
 
 ## Installation
 
@@ -15,7 +15,13 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/sanfran_food_truck>.
+## Postman info
+Use this url:
+```
+https://electricquestlog.com/api/sanfran_food_truck?latitude=37.738726803987134&longitude=-122.40673602990493&distance=0.25&food_items=tacos, burritos, quesadillas, tortas, nachos (refried beans, cheese sauce, salsa fresca), carnes (beef, chicken, marinated pork, fried pork), canned beans, rice, sodas, horchata drinks.&include_push_carts=true
+```
 
+Add this command to the scripts tab:
+```
+console.log(JSON.parse(pm.response.json().results))
+```
