@@ -55,4 +55,11 @@ defmodule SanfranFoodTruckTest do
     last = results |> List.last()
     assert SanfranFoodTruck.calculate_distance(%{latitude: latitude, longitude: longitude}, first) <= SanfranFoodTruck.calculate_distance(%{latitude: latitude, longitude: longitude}, last)
   end
+
+  test "order by food similarity" do
+    assert SanfranFoodTruck.get_data(%{"food_items" => "rice"})
+    |> List.first()
+    |> Map.get(:food_items)
+    |> String.contains?("rice")
+  end
 end

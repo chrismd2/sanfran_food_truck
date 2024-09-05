@@ -37,6 +37,7 @@ defmodule SanfranFoodTruck do
     |> Enum.map(& LocationValidator.validate_and_normalize_location(&1))
     |> Enum.filter(& &1.status != :expired || params["get_expired"])
     |> maybe_order_locations(params)
+    |> maybe_order_foods(params)
   end
 
   defp maybe_order_locations(list, %{"latitude" => latitude, "longitude" => longitude} = params) when is_binary(latitude) and is_binary(longitude) do
@@ -58,6 +59,12 @@ defmodule SanfranFoodTruck do
     |> Enum.sort_by(&calculate_distance(&1, %{latitude: (latitude), longitude: (longitude)}, params["units"] || "miles" ), :asc)
   end
   defp maybe_order_locations(list, _params), do: list
+
+  defp maybe_order_foods(list, %{"food_items" => food_items}) do
+    list
+    |> Enum.sort_by(& String.bag_distance(&1.food_items, food_items))
+  end
+  defp maybe_order_foods(list, _params), do: list
 
   def calculate_distance(%{latitude: lat_1, longitude: lon_1} = _p1, %{latitude: lat_2, longitude: lon_2} = _p2, units \\ "miles") when is_float(lat_1) and is_float(lon_1) and is_float(lat_2) and is_float(lon_2) and units in ["kilometers", "miles"] do
     import Math
