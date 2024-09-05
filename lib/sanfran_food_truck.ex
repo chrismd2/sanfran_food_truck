@@ -62,7 +62,7 @@ defmodule SanfranFoodTruck do
 
   defp maybe_order_foods(list, %{"food_items" => food_items}) do
     list
-    |> Enum.sort_by(& String.bag_distance(&1.food_items, food_items))
+    |> Enum.sort_by(& String.bag_distance(&1.food_items, food_items) * 1000, :desc)
   end
   defp maybe_order_foods(list, _params), do: list
 
