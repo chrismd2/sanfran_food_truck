@@ -7,6 +7,9 @@ defmodule SanfranFoodTruck.LocationValidator do
 
   ## Parameters
     - params: A map containing the user input to validate and normalize.
+      > latitude and longitude are a point of interest
+      > distance is area around point of interest (note: latitude and longitude is required)
+      > food_items user wants to find
 
   ## Returns
     - {:ok, changeset} if validation passes, where changeset is a map of normalized data.
