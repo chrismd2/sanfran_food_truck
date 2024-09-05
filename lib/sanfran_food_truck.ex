@@ -52,7 +52,7 @@ defmodule SanfranFoodTruck do
   defp maybe_order_locations(list, %{"latitude" => latitude, "longitude" => longitude} = params) do
     if params["distance"] do
       list
-      |> Enum.filter(& String.to_integer(params["distance"]) >= calculate_distance(&1, %{latitude: latitude, longitude: longitude}, params["units"] || "miles" ) )
+      |> Enum.filter(& String.to_float(params["distance"]) >= calculate_distance(&1, %{latitude: latitude, longitude: longitude}, params["units"] || "miles" ) )
     else
       list
     end
